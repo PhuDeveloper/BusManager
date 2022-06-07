@@ -7,7 +7,7 @@ const { Content } = Layout;
 
 
 
-function DriverManager() {
+function ScheduleManager() {
 
     return (
         <Layout
@@ -23,7 +23,7 @@ function DriverManager() {
                         margin: '0 16px',
                     }}
                 >
-                    Quản lý tài xế
+                    Quản lý lịch làm việc
                 </Content>
 
             </Layout>
@@ -32,4 +32,4 @@ function DriverManager() {
     )
 }
 
-export default DriverManager
+export default ScheduleManager

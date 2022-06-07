@@ -7,7 +7,7 @@ const { Content } = Layout;
 
 
 
-function DriverManager() {
+function AbsentManager() {
 
     return (
         <Layout
@@ -23,7 +23,7 @@ function DriverManager() {
                         margin: '0 16px',
                     }}
                 >
-                    Quản lý tài xế
+                    Quản lý báo vắng
                 </Content>
 
             </Layout>
@@ -32,4 +32,4 @@ function DriverManager() {
     )
 }
 
-export default DriverManager
+export default AbsentManager
