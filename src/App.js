@@ -10,11 +10,11 @@ function App() {
   return (
     <div >
       <Routes>
-        <Route path="/driver" element={<DriverManager />} />
-        <Route path="/station" element={<StationManager />} />
-        <Route path="/absent" element={<AbsentManager />} />
-        <Route path="/router" element={<RouterManager />} />
-        <Route path="/schedule" element={<ScheduleManager />} />
+        <Route path="/admin/driver" element={<DriverManager />} />
+        <Route path="/admin/station" element={<StationManager />} />
+        <Route path="/admin/absent" element={<AbsentManager />} />
+        <Route path="/admin/router" element={<RouterManager />} />
+        <Route path="/admin/schedule" element={<ScheduleManager />} />
       </Routes>
     </div>
   );

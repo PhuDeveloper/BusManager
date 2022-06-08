@@ -9,8 +9,60 @@ export const StaffReducer = createSlice({
         isError: false,
     },
     reducers: {
+        getListStaffStart: (state, action) => {
+            state.isLoading = true;
+        },
+        getListStaffSuccess: (state, action) => {
 
+            state.isLoading = false;
+            state.staffs = action.payload;
+        },
+        getListStaffError: (state, action) => {
+            state.isError = true;
+        },
+        addStaffStart: (state, action) => {
+            state.isLoading = true;
+        },
+        addStaffSuccess: (state, action) => {
+            state.isLoading = false;
+            state.staffs = action.payload;
+        },
+        addStaffError: (state, action) => {
+            state.isError = true;
+        },
+        editStaffStart: (state, action) => {
+            state.isLoading = true;
+        },
+        editStaffSuccess: (state, action) => {
+            state.isLoading = false;
+            state.staffs = action.payload;
+        },
+        editStaffError: (state, action) => {
+            state.isError = true;
+        },
+        removeStaffStart: (state, action) => {
+            state.isLoading = true;
+        },
+        removeStaffSuccess: (state, action) => {
+            state.isLoading = false;
+            state.staffs = action.payload;
+        },
+        removeStaffError: (state, action) => {
+            state.isError = true;
+        }
     }
 })
-export const { }=StaffReducer.actions
+export const {
+    getListStaffStart,
+    getListStaffSuccess,
+    getListStaffError,
+    addStaffStart,
+    addStaffSuccess,
+    addStaffError,
+    editStaffStart,
+    editStaffSuccess,
+    editStaffError,
+    removeStaffStart,
+    removeStaffSuccess,
+    removeStaffError } = StaffReducer.actions
 export default StaffReducer.reducer
