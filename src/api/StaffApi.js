@@ -9,7 +9,7 @@ export const deleteStaffApi = (data) => {
   const url = "/delete-staff";
   return AxiosClient.post(url, JSON.stringify(data));
 };
-export const insertStaffApi = (data) => {
+export const addStaffApi = (data) => {
 
   const url = "/insert-staff";
   return AxiosClient.post(url, JSON.stringify(data));
