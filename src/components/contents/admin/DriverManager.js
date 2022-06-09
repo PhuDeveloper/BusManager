@@ -3,9 +3,10 @@ import { Layout, Space, Table, Button, Modal, Spin, Form, Input, message, Popcon
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addStaffStart, editStaffStart, getListStaffStart, removeStaffStart } from '../../../redux/reduce/StaffReduce';
+import { addStaffStart, updateStaffStart, getListStaffStart, removeStaffStart } from '../../../redux/reduce/StaffReduce';
 import HeaderAdmin from '../../header/HeaderAdmin';
 import MenuAdmin from '../../menu/admin/MenuAdmin';
+
 const { Content } = Layout;
 
 
@@ -23,8 +24,8 @@ function DriverManager() {
     const [driverLicense, setDriverLicense] = useState("");
     const [password, setPassword] = useState("");
     const [date, setDate] = useState("");
-    const [isShowModalEdit, setIsShowModalEdit] = useState(false);
-    const [editStaff, setEditStaff] = useState(null);
+    const [isShowModalUpdate, setIsShowModalUpdate] = useState(false);
+    const [updateStaff, setUpdateStaff] = useState(null);
 
     const columns = [
         {
@@ -72,7 +73,7 @@ function DriverManager() {
             key: 'action',
             render: (record) => (
                 <Space size="middle">
-                    <a onClick={() => { handleShowModalEditStaff(record) }}>Edit {record.name}</a>
+                    <a onClick={() => { handleShowModalUpdateStaff(record) }}>Edit {record.name}</a>
                     <Popconfirm placement="topLeft" onConfirm={() => handleDismissingStaff(record)} title='Bạn có chắc muốn cho nhân viên này nghỉ việc ?' okText="Yes" cancelText="No">
                         <a>Dismissing</a>
                     </Popconfirm>
@@ -86,9 +87,9 @@ function DriverManager() {
             staff_id: record.id_staff
         }))
     }
-    const handleShowModalEditStaff = (record) => {
-        setIsShowModalEdit(true);
-        setEditStaff({ ...record });
+    const handleShowModalUpdateStaff = (record) => {
+        setIsShowModalUpdate(true);
+        setUpdateStaff({ ...record });
     }
     const [isModalAddStaff, setIsModalAddStaff] = useState(false);
 
@@ -202,19 +203,19 @@ function DriverManager() {
                     </Modal>
                     <Modal
                         title="Edit"
-                        visible={isShowModalEdit}
+                        visible={isShowModalUpdate}
                         okText="Save"
-                        onCancel={() => setIsShowModalEdit(false)}
+                        onCancel={() => setIsShowModalUpdate(false)}
                         onOk={() => {
-                            setIsShowModalEdit(false);
+                            setIsShowModalUpdate(false);
                             dispatch(
-                                editStaffStart({
-                                    id_staff: editStaff.id_staff,
-                                    first_name: editStaff.first_name,
-                                    last_name: editStaff.last_name,
-                                    address: editStaff.address,
-                                    phone_num: editStaff.phone_num,
-                                    driver_license: editStaff.driver_lisence,
+                                updateStaffStart({
+                                    id_staff: updateStaff.id_staff,
+                                    first_name: updateStaff.first_name,
+                                    last_name: updateStaff.last_name,
+                                    address: updateStaff.address,
+                                    phone_num: updateStaff.phone_num,
+                                    driver_license: updateStaff.driver_lisence,
                                 })
                             );
                         }}
@@ -225,9 +226,9 @@ function DriverManager() {
                                     className="paddingInput"
                                     placeholder="id_staff"
                                     disabled
-                                    value={editStaff?.id_staff}
+                                    value={updateStaff?.id_staff}
                                     onChange={(e) => {
-                                        setEditStaff((pre) => {
+                                        setUpdateStaff((pre) => {
                                             return { ...pre, id_staff: e.target.value };
                                         });
                                     }}
@@ -237,9 +238,9 @@ function DriverManager() {
                                 <Input
                                     className="paddingInput"
                                     placeholder="first_name"
-                                    value={editStaff?.first_name}
+                                    value={updateStaff?.first_name}
                                     onChange={(e) => {
-                                        setEditStaff((pre) => {
+                                        setUpdateStaff((pre) => {
                                             return { ...pre, first_name: e.target.value };
                                         });
                                     }}
@@ -249,9 +250,9 @@ function DriverManager() {
                                 <Input
                                     className="paddingInput"
                                     placeholder="last_name"
-                                    value={editStaff?.last_name}
+                                    value={updateStaff?.last_name}
                                     onChange={(e) => {
-                                        setEditStaff((pre) => {
+                                        setUpdateStaff((pre) => {
                                             return { ...pre, last_name: e.target.value };
                                         });
                                     }}
@@ -261,9 +262,9 @@ function DriverManager() {
                                 <Input
                                     className="paddingInput"
                                     placeholder="address"
-                                    value={editStaff?.address}
+                                    value={updateStaff?.address}
                                     onChange={(e) => {
-                                        setEditStaff((pre) => {
+                                        setUpdateStaff((pre) => {
                                             return { ...pre, address: e.target.value };
                                         });
                                     }}
@@ -274,9 +275,9 @@ function DriverManager() {
                                 <Input
                                     className="paddingInput"
                                     placeholder="phone_num"
-                                    value={editStaff?.phone_num}
+                                    value={updateStaff?.phone_num}
                                     onChange={(e) => {
-                                        setEditStaff((pre) => {
+                                        setUpdateStaff((pre) => {
                                             return { ...pre, phone_num: e.target.value };
                                         });
                                     }}
@@ -286,9 +287,9 @@ function DriverManager() {
                                 <Input
                                     className="paddingInput"
                                     placeholder="driver_license"
-                                    value={editStaff?.driver_lisence}
+                                    value={updateStaff?.driver_lisence}
                                     onChange={(e) => {
-                                        setEditStaff((pre) => {
+                                        setUpdateStaff((pre) => {
                                             return { ...pre, driver_lisence: e.target.value };
                                         });
                                     }}

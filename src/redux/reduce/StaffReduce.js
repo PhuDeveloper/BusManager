@@ -30,14 +30,14 @@ export const StaffReducer = createSlice({
         addStaffError: (state, action) => {
             state.isError = true;
         },
-        editStaffStart: (state, action) => {
+        updateStaffStart: (state, action) => {
             state.isLoading = true;
         },
-        editStaffSuccess: (state, action) => {
+        updateStaffSuccess: (state, action) => {
             state.isLoading = false;
             state.staffs = action.payload;
         },
-        editStaffError: (state, action) => {
+        updateStaffError: (state, action) => {
             state.isError = true;
         },
         removeStaffStart: (state, action) => {
@@ -59,9 +59,9 @@ export const {
     addStaffStart,
     addStaffSuccess,
     addStaffError,
-    editStaffStart,
-    editStaffSuccess,
-    editStaffError,
+    updateStaffStart,
+    updateStaffSuccess,
+    updateStaffError,
     removeStaffStart,
     removeStaffSuccess,
     removeStaffError } = StaffReducer.actions

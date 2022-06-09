@@ -3,6 +3,7 @@ import AxiosClient from "./AxiosClient";
 export const getStaffApi = () => {
   const url = "/get-list-staff";
   return AxiosClient.get(url);
+
 };
 export const deleteStaffApi = (data) => {
 
