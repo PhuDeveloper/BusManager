@@ -8,6 +8,7 @@ export const addStationApi = (data) => {
     return AxiosClient.post(url, JSON.stringify(data))
 }
 export const updateStationApi = (data) => {
+    console.log('data', data);
     const url = "/update-station"
-    return AxiosClient.put(url, JSON.stringify(data))
+    return AxiosClient.post(url, JSON.stringify(data))
 }

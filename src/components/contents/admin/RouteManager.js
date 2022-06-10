@@ -7,7 +7,7 @@ const { Content } = Layout;
 
 
 
-function RouterManager() {
+function RouteManager() {
 
     return (
         <Layout
@@ -32,4 +32,4 @@ function RouterManager() {
     )
 }
 
-export default RouterManager
+export default RouteManager

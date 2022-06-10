@@ -3,12 +3,14 @@ import createSagaMiddleware from "redux-saga"
 import RootSaga from "./saga/RootSaga";
 import StaffReducer from './reduce/StaffReduce';
 import StationReducer from './reduce/StationReduce';
+import RouteReducer from './reduce/RouteReduce';
 
 const sagaMiddleware = createSagaMiddleware();
 export const Store = configureStore({
     reducer: {
         staff: StaffReducer,
-        station: StationReducer
+        station: StationReducer,
+        route: RouteReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(sagaMiddleware),

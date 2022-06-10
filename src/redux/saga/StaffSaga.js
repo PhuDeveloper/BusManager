@@ -1,5 +1,10 @@
 import { takeEvery, call, put, delay } from "redux-saga/effects";
-import { addStaffError, addStaffStart, addStaffSuccess, updateStaffError, updateStaffStart, updateStaffSuccess, getListStaffError, getListStaffStart, getListStaffSuccess, removeStaffError, removeStaffStart, removeStaffSuccess } from "../reduce/StaffReduce";
+import {
+    addStaffError, addStaffStart, addStaffSuccess,
+    updateStaffError, updateStaffStart, updateStaffSuccess,
+    getListStaffError, getListStaffStart, getListStaffSuccess,
+    removeStaffError, removeStaffStart, removeStaffSuccess
+} from "../reduce/StaffReduce";
 import { getStaffApi, addStaffApi, deleteStaffApi, updateStaffApi } from './../../api/StaffApi';
 
 
