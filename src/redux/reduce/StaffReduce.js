@@ -5,6 +5,7 @@ export const StaffReducer = createSlice({
     name: 'staff',
     initialState: {
         staffs: [],
+        infoStaffs: [],
         isLoading: false,
         isError: false,
     },
@@ -18,6 +19,16 @@ export const StaffReducer = createSlice({
             state.staffs = action.payload;
         },
         getListStaffError: (state, action) => {
+            state.isError = true;
+        },
+        getListByEmptyWorkTodayStart: (state, action) => {
+            state.isLoading = true;
+        },
+        getListByEmptyWorkTodaySuccess: (state, action) => {
+            state.isLoading = false;
+            state.infoStaffs = action.payload;
+        },
+        getListByEmptyWorkTodayError: (state, action) => {
             state.isError = true;
         },
         addStaffStart: (state, action) => {
@@ -56,6 +67,9 @@ export const {
     getListStaffStart,
     getListStaffSuccess,
     getListStaffError,
+    getListByEmptyWorkTodayStart,
+    getListByEmptyWorkTodaySuccess,
+    getListByEmptyWorkTodayError,
     addStaffStart,
     addStaffSuccess,
     addStaffError,

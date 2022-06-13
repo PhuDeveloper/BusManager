@@ -9,19 +9,14 @@ export default function* StationSaga() {
     yield takeEvery(getListStationStart.type, ApiGetListStation);
     yield takeEvery(addStationStart.type, ApiAddStation);
     yield takeEvery(updateStationStart.type, ApiUpdateStation);
-
-
-
 }
 function* ApiGetListStation() {
     try {
         let response = yield call(getStationApi);
-
         yield put(getListStationSuccess(response))
     } catch (error) {
         yield put(getListStationError())
     }
-
 }
 function* ApiAddStation(action) {
 

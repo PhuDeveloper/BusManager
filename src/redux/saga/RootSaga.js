@@ -3,6 +3,9 @@ import StaffSaga from "./StaffSaga"
 import AdminSaga from "./AdminSaga"
 import StationSaga from "./StationSaga"
 import RouteSaga from "./RouteSaga"
+import ScheduleSaga from "./ScheduleSaga"
+import BusSaga from "./BusSaga"
+import SemesterSaga from "./SemesterSaga"
 
 
 export default function* RootSaga() {
@@ -10,6 +13,9 @@ export default function* RootSaga() {
         StaffSaga(),
         AdminSaga(),
         StationSaga(),
-        RouteSaga()
+        RouteSaga(),
+        ScheduleSaga(),
+        SemesterSaga(),
+        BusSaga(),
     ])
 }
