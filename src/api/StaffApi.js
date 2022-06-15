@@ -5,11 +5,7 @@ export const getStaffApi = () => {
   return AxiosClient.get(url);
 
 };
-export const getListStaffEmptyWorkTodayApi = (data) => {
 
-  const url = "/get_list_staff_empty_work_today";
-  return AxiosClient.post(url, JSON.stringify(data));
-};
 export const deleteStaffApi = (data) => {
 
   const url = "/delete-staff";

@@ -297,7 +297,12 @@ function DriverManager() {
                             </Form.Item>
                         </Form>
                     </Modal>
-                    <Table columns={columns} dataSource={listStaff} />
+                    <Table
+                    pagination={{
+                        defaultPageSize: 5,
+                        showSizeChanger: true,
+                        pageSizeOptions: ["5", "10", "15"],
+                    }} columns={columns} dataSource={listStaff} />
                 </Content>
                 )}
             </Layout>

@@ -4,6 +4,7 @@ export const ScheduleReducer = createSlice({
     name: 'schedule',
     initialState: {
         schedules: [],
+        scheduleByDates: [],
         isLoading: false,
         isError: false,
     },
@@ -23,20 +24,21 @@ export const ScheduleReducer = createSlice({
             state.isLoading = true;
         },
         getListByDateScheduleSuccess: (state, action) => {
+
             state.isLoading = false;
-            state.schedules = action.payload;
+            state.scheduleByDates = action.payload;
         },
         getListByDateScheduleError: (state, action) => {
             state.isError = true;
         },
-        updateScheduleStart: (state, action) => {
+        addScheduleStart: (state, action) => {
             state.isLoading = true;
         },
-        updateScheduleSuccess: (state, action) => {
+        addScheduleSuccess: (state, action) => {
             state.isLoading = false;
             state.schedules = action.payload;
         },
-        updateScheduleError: (state, action) => {
+        addScheduleError: (state, action) => {
             state.isError = true;
         },
 
@@ -49,8 +51,8 @@ export const {
     getListByDateScheduleStart,
     getListByDateScheduleSuccess,
     getListByDateScheduleError,
-    updateScheduleStart,
-    updateScheduleSuccess,
-    updateScheduleError,
+    addScheduleStart,
+    addScheduleSuccess,
+    addScheduleError,
 } = ScheduleReducer.actions
 export default ScheduleReducer.reducer

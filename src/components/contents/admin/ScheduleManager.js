@@ -1,54 +1,68 @@
 
 import { Button, Col, Input, Layout, Row, Select, Table } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderAdmin from '../../header/HeaderAdmin';
 import MenuAdmin from '../../menu/admin/MenuAdmin';
+import { useDispatch, useSelector } from 'react-redux';
+import { addScheduleStart, getListByDateScheduleStart, getListScheduleStart } from '../../../redux/reduce/ScheduleReduce';
+import { getListByDateBusStart } from '../../../redux/reduce/BusReduce';
 const { Content } = Layout;
-
+const { Option } = Select
 
 
 function ScheduleManager() {
+    const [idBus, setIdBus] = useState("")
+    const [idStaff, setIdStaff] = useState("")
+    const [dateWork, setDateWork] = useState("")
+    const dispatch = useDispatch()
+    const listSchedule = useSelector((state) => state.schedule.schedules)
+    const listScheduleByDate = useSelector((state) => state.schedule.scheduleByDates)
+    const listBusByDate = useSelector((state) => state.bus.buses)
     const columns = [
         {
             title: 'Ngày làm',
-            dataIndex: 'account',
-            key: 'account',
+            dataIndex: 'date_work',
+            key: 'date_work',
 
         },
         {
             title: 'Số xe',
-            dataIndex: 'first_name',
-            key: 'first_name',
+            dataIndex: 'bus_plate',
+            key: 'bus_plate',
         },
         {
             title: 'Tên tài xế',
-            dataIndex: 'last_name',
-            key: 'last_name',
+            dataIndex: 'full_name',
+            key: 'full_name',
         },
         {
             title: 'Ca làm',
-            key: 'phone_num',
-            dataIndex: 'phone_num',
+            key: 'shift',
+            dataIndex: 'shift',
 
         },
-
-        // {
-        //     title: 'Action',
-        //     key: 'action',
-        //     render: (record) => (
-        //         <Space size="middle">
-        //             <a onClick={() => { handleShowModalUpdateStaff(record) }}>Edit {record.name}</a>
-        //             <Popconfirm placement="topLeft" onConfirm={() => handleDismissingStaff(record)} title='Bạn có chắc muốn cho nhân viên này nghỉ việc ?' okText="Yes" cancelText="No">
-        //                 <a>Dismissing</a>
-        //             </Popconfirm>
-
-        //         </Space>
-        //     ),
-        // },
     ];
-    const handleChangeSelectDate = (e) => {
-
-        console.log(e);
+    useEffect(() => {
+        dispatch(getListScheduleStart())
+    }, []);
+    const handleChangeSelectDate = (date) => {
+        setDateWork(date)
+        dispatch(getListByDateScheduleStart(
+            {
+                date: date
+            }
+        ))
+        setTimeout(() => dispatch(getListByDateBusStart({
+            date: date,
+            id_semester: 24
+        })), 1000);
+    }
+    const handleClickBtnAddSchedule = () => {
+        dispatch(addScheduleStart({
+            id_bus: idBus,
+            id_staff: idStaff,
+            date_work: dateWork
+        }))
     }
     return (
         <Layout
@@ -72,38 +86,35 @@ function ScheduleManager() {
                         </Col>
                         <Col className="gutter-row" span={4}>
                             <label>Tài xế</label>
-                            <Select style={{ with: 200 }} placeholder="Chọn tài xế">
-
-                                {/* {
-
-    listRoute.map((val) => (
-
-        <Option value={val.id_route}>{val.name_route}</Option>
-    ))
-} */}
-
+                            <Select onChange={e => { setIdStaff(e) }} style={{ with: 200 }} placeholder="Chọn tài xế">
+                                {
+                                    listScheduleByDate.map((val) => (
+                                        <Option value={val.id_staff}>{val.first_name}</Option>
+                                    ))
+                                }
                             </Select>
                         </Col>
                         <Col className="gutter-row" span={4}>
                             <label>Xe</label>
-                            <Select style={{ with: 200 }} placeholder="Chọn xe">
-
-                                {/* {
-
-                                    listRoute.map((val) => (
-
-                                        <Option value={val.id_route}>{val.name_route}</Option>
+                            <Select onChange={e => { setIdBus(e) }} style={{ with: 200 }} placeholder="Chọn xe">
+                                {
+                                    listBusByDate.map((val) => (
+                                        <Option value={val.id_bus}>{val.bus_plate}</Option>
                                     ))
-                                } */}
-
+                                }
                             </Select>
 
                         </Col>
                         <Col className="gutter-row" span={4}>
-                            <Button type="primary">Thêm điểm đón</Button>
+                            <Button onClick={handleClickBtnAddSchedule} type="primary">Phân lịch làm</Button>
                         </Col>
                     </Row>
-                    <Table columns={columns} dataSource={[]} />
+                    <Table
+                        pagination={{
+                            defaultPageSize: 5,
+                            showSizeChanger: true,
+                            pageSizeOptions: ["5", "10", "15"],
+                        }} columns={columns} dataSource={listSchedule} />
                 </Content>
 
             </Layout>

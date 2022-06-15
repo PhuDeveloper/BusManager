@@ -3,7 +3,7 @@ import {
     addStaffError, addStaffStart, addStaffSuccess,
     updateStaffError, updateStaffStart, updateStaffSuccess,
     getListStaffError, getListStaffStart, getListStaffSuccess,
-    removeStaffError, removeStaffStart, removeStaffSuccess, getListByEmptyWorkTodayStart
+    removeStaffError, removeStaffStart, removeStaffSuccess
 } from "../reduce/StaffReduce";
 import { getStaffApi, addStaffApi, deleteStaffApi, updateStaffApi } from './../../api/StaffApi';
 
@@ -13,7 +13,7 @@ export default function* StaffSaga() {
     yield takeEvery(addStaffStart.type, ApiAddStaff);
     yield takeEvery(removeStaffStart.type, ApiRemoveStaff);
     yield takeEvery(updateStaffStart.type, ApiUpdateStaff);
-    yield takeEvery(getListByEmptyWorkTodayStart.type, ApiGetListByEmptyWorkToday)
+
 
 }
 function* ApiGetListStaff() {
@@ -74,8 +74,4 @@ function* ApiUpdateStaff(action) {
         console.log(error);
         yield put(updateStaffError())
     }
-}
-function* ApiGetListByEmptyWorkToday(action) {
-
-
 }

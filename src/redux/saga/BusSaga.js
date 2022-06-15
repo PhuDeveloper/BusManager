@@ -22,12 +22,10 @@ function* ApiGetListBus(action) {
 function* ApiGetListBusBySemester(action) {
     try {
         let response = yield call(getBySemesterBusApi, action.payload);
-        if (response.result) {
-            yield put(getListBySemesterBusSuccess(response))
-        }
-        else {
-            yield put(getListBySemesterBusError())
-        }
+
+        yield put(getListBySemesterBusSuccess(response))
+
+
     } catch (error) {
         yield put(getListBySemesterBusError())
 
@@ -37,12 +35,7 @@ function* ApiGetListBusBySemester(action) {
 function* ApiGetListBusByDate(action) {
     try {
         let response = yield call(getByDateBusApi, action.payload);
-        if (response.result) {
-            yield put(getListByDateBusSuccess(response))
-        }
-        else {
-            yield put(getListByDateBusError())
-        }
+        yield put(getListByDateBusSuccess(response))
     } catch (error) {
         yield put(getListByDateBusError())
 
