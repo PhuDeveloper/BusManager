@@ -7,6 +7,7 @@ import RouteReducer from './reduce/RouteReduce';
 import ScheduleReducer from './reduce/ScheduleReduce';
 import BusReducer from './reduce/BusReduce';
 import SemesterReducer from "./reduce/SemesterReduce";
+import AuthStaffReducer from './reduce/AuthDriverReduce';
 
 const sagaMiddleware = createSagaMiddleware();
 export const Store = configureStore({
@@ -16,7 +17,8 @@ export const Store = configureStore({
         route: RouteReducer,
         schedule: ScheduleReducer,
         bus: BusReducer,
-        semester: SemesterReducer
+        semester: SemesterReducer,
+        authStaff: AuthStaffReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(sagaMiddleware),

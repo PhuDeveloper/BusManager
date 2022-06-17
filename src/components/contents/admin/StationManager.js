@@ -6,7 +6,7 @@ import MenuAdmin from '../../menu/admin/MenuAdmin';
 import { useDispatch, useSelector } from 'react-redux';
 import { addStationStart, getListStationStart, updateStationStart } from '../../../redux/reduce/StationReduce';
 import { getListRouteStart } from '../../../redux/reduce/RouteReduce';
-
+import { useNavigate } from 'react-router-dom';
 
 const { Content } = Layout;
 const { Option } = Select
@@ -16,7 +16,8 @@ function StationManager() {
     const dispatch = useDispatch()
     const listStation = useSelector((state) => state.station.stations)
     const listRoute = useSelector((state) => state.route.routes)
-    console.log(listRoute);
+    const isLoginStaff = useSelector((state) => state.authStaff.isLoginStaff)
+    const navigate = useNavigate()
     const [nameStation, setNameStation] = useState('')
     const [position, setPosition] = useState('')
     const [price, setPrice] = useState('')
@@ -24,10 +25,14 @@ function StationManager() {
     const [isShowModalUpdate, setIsShowModalUpdate] = useState(false)
     const [updateStation, setUpdateStation] = useState(null);
     useEffect(() => {
-        dispatch(
-            getListStationStart()
-        )
-        setTimeout(() => { dispatch(getListRouteStart()) }, 2000)
+        if (isLoginStaff) {
+            dispatch(
+                getListStationStart()
+            )
+            setTimeout(() => { dispatch(getListRouteStart()) }, 2000)
+        } else {
+            navigate("/login-staff")
+        }
     }, []);
     const handleAddStation = () => {
         dispatch(addStationStart({

@@ -6,6 +6,7 @@ import RouteSaga from "./RouteSaga"
 import ScheduleSaga from "./ScheduleSaga"
 import BusSaga from "./BusSaga"
 import SemesterSaga from "./SemesterSaga"
+import AuthStaffSaga from "./AuthDriverSaga"
 
 
 export default function* RootSaga() {
@@ -17,5 +18,6 @@ export default function* RootSaga() {
         ScheduleSaga(),
         SemesterSaga(),
         BusSaga(),
+        AuthStaffSaga()
     ])
 }

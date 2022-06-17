@@ -7,6 +7,7 @@ import StationManager from './components/contents/admin/StationManager';
 import AbsentManager from './components/contents/admin/AbsentManager';
 import RouteManager from './components/contents/admin/RouteManager';
 import ScheduleManager from './components/contents/admin/ScheduleManager';
+import PageLoginStaff from './components/contents/Auth/PageLoginDriver';
 function App() {
   return (
     <div >
@@ -16,6 +17,7 @@ function App() {
         <Route path="/admin/absent" element={<AbsentManager />} />
         <Route path="/admin/route" element={<RouteManager />} />
         <Route path="/admin/schedule" element={<ScheduleManager />} />
+        <Route path="/login-staff" element={<PageLoginStaff />} />
       </Routes>
     </div>
   );

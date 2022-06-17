@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addStaffStart, updateStaffStart, getListStaffStart, removeStaffStart } from '../../../redux/reduce/StaffReduce';
 import HeaderAdmin from '../../header/HeaderAdmin';
 import MenuAdmin from '../../menu/admin/MenuAdmin';
+import { useNavigate } from 'react-router-dom';
 
 const { Content } = Layout;
 
@@ -14,7 +15,11 @@ const { Content } = Layout;
 function DriverManager() {
     const listStaff = useSelector((station) => station.staff.staffs)
     const isLoading = useSelector((station) => station.staff.isLoading)
+    const dataStaff = useSelector((state) => state.authStaff.authStaffs)
+    const isLoginStaff = useSelector((state) => state.authStaff.isLoginStaff)
+
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [account, setAccount] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -123,9 +128,14 @@ function DriverManager() {
         setIsModalAddStaff(false);
     };
     useEffect(() => {
-        dispatch(
-            getListStaffStart()
-        )
+        if (isLoginStaff) {
+            dispatch(
+                getListStaffStart()
+            )
+        }
+        else {
+            navigate("/login-staff")
+        }
     }, []);
     return (
         <Layout
@@ -298,11 +308,11 @@ function DriverManager() {
                         </Form>
                     </Modal>
                     <Table
-                    pagination={{
-                        defaultPageSize: 5,
-                        showSizeChanger: true,
-                        pageSizeOptions: ["5", "10", "15"],
-                    }} columns={columns} dataSource={listStaff} />
+                        pagination={{
+                            defaultPageSize: 5,
+                            showSizeChanger: true,
+                            pageSizeOptions: ["5", "10", "15"],
+                        }} columns={columns} dataSource={listStaff} />
                 </Content>
                 )}
             </Layout>

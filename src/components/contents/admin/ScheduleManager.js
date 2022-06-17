@@ -1,6 +1,8 @@
 
 import { Button, Col, Input, Layout, Row, Select, Table } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import HeaderAdmin from '../../header/HeaderAdmin';
 import MenuAdmin from '../../menu/admin/MenuAdmin';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +17,8 @@ function ScheduleManager() {
     const [idStaff, setIdStaff] = useState("")
     const [dateWork, setDateWork] = useState("")
     const dispatch = useDispatch()
+    const isLoginStaff = useSelector((state) => state.authStaff.isLoginStaff)
+    const navigate = useNavigate()
     const listSchedule = useSelector((state) => state.schedule.schedules)
     const listScheduleByDate = useSelector((state) => state.schedule.scheduleByDates)
     const listBusByDate = useSelector((state) => state.bus.buses)
@@ -43,7 +47,13 @@ function ScheduleManager() {
         },
     ];
     useEffect(() => {
-        dispatch(getListScheduleStart())
+        if (isLoginStaff) {
+
+            dispatch(getListScheduleStart())
+        } else {
+            navigate("/login-staff")
+        }
+
     }, []);
     const handleChangeSelectDate = (date) => {
         setDateWork(date)

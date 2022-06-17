@@ -10,7 +10,7 @@ import { Breadcrumb, Layout, Menu, Col, Row, Avatar } from 'antd';
 
 const { Header } = Layout;
 
-export default function HeaderAdmin() {
+export default function HeaderLoginDriver() {
     const handleLogout = () => {
         console.log('logout');
     }
@@ -20,18 +20,6 @@ export default function HeaderAdmin() {
             <Row>
                 <Col style={{ color: 'white', fontSize: '30px' }} span={20}>
                     <CarOutlined /> BusSchool
-                </Col>
-
-                <Col style={{ color: 'white' }} span={2} >
-                    <Avatar
-                        style={{
-                            backgroundColor: '#87d068',
-                        }}
-                        icon={<UserOutlined />}
-                    />
-                </Col>
-                <Col span={2} >
-                    <a style={{ color: 'white' }}> <span onClick={handleLogout}> Đăng xuất</span></a>
                 </Col>
             </Row>
         </Header>
