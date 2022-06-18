@@ -22,9 +22,9 @@ Dự án này mình đã tạo xong cấu trúc cơ bản của react redux, đ�
 
 
 
-<h4>Chức năng được chia theo phân quyền như sau</h4>
+<h4>Chức năng: </h4>
 
-<h4>ADMIN</h4>
+
 
 - Đăng nhập tài khoản admin
 - Chỉnh sửa thông tin cá nhân của admin
@@ -33,22 +33,8 @@ Dự án này mình đã tạo xong cấu trúc cơ bản của react redux, đ�
 - Xem danh sách và phân lịch làm việc cho tài xế 
 - Xác nhận và phân lại lịch làm việc nếu như tài xế báo vắng
 - Xem danh sách, phân tuyến cho xe bus
-- Xem danh sách, tạo điểm đón và chỉnh sửa mức giá cụ thể cho từng điểm đón
+- Xem danh sách, tạo điểm đón mới và chỉnh sửa mức giá cụ thể cho từng điểm đón
 
-<h4>TÀI XẾ</h4>
 
-- Đăng nhập tài khoản tài xế
-- Chỉnh sửa thông tin cá nhâns
-- Đổi mật khẩu
-- Xem danh sách, điểm danh các học sinh lên xe trong ngày 
-- Xem lịch làm việc và báo vắng nếu như có việc bận, ốm đau,...
 
-<h4>PHỤ HUYNH</h4>
-
-- Đăng nhập tài khoản phụ huynh
-- Chỉnh sửa thông tin cá nhân
-- Đổi mật khẩu chho tài khoản
-- Xem danh sách con đang theo học tại trường
-- Đăng kí, hủy đăng kí điểm đón cho con 
-- Xem thống kê các ngày đi học hoặc vắng học của con
 
