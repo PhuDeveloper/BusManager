@@ -19,7 +19,11 @@ export const AuthStaffReducer = createSlice({
         loginStaffError: (state, action) => {
             state.isLoginStaff = false
         },
+        logoutStaff: (state) => {
 
+            state.isLoginStaff = false
+
+        }
 
     }
 })
@@ -27,5 +31,6 @@ export const {
     loginStaffStart,
     loginStaffSuccess,
     loginStaffError,
+    logoutStaff
 } = AuthStaffReducer.actions
 export default AuthStaffReducer.reducer

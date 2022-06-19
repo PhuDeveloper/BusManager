@@ -6,29 +6,22 @@ import {
     LineChartOutlined,
     UserOutlined,
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, Col, Row, Avatar, Popover } from 'antd';
+import { Breadcrumb, Layout, Menu, Col, Row, Avatar } from 'antd';
 import { useDispatch } from 'react-redux';
 import { logoutStaff } from '../../redux/reduce/AuthDriverReduce';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const { Header } = Layout;
 
-export default function HeaderAdmin() {
+export default function HeaderParent() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleLogout = () => {
         dispatch(logoutStaff())
         setTimeout(() => {
-            navigate("/login-staff")
+            navigate("/login-parent")
         }, 200)
     }
-    const text = <span>Cài đặt</span>;
-    const content = (
-        <div>
-            <p><Link to='/admin/change-password'>Đổi mật khẩu</Link></p>
-            <p><Link to='/admin/change-info'>Đổi thông tin cá nhân</Link></p>
-        </div>
-    );
     return (
 
         <Header>
@@ -38,18 +31,12 @@ export default function HeaderAdmin() {
                 </Col>
 
                 <Col style={{ color: 'white' }} span={2} >
-                    <Popover placement="bottom" title={text} content={content} trigger="click">
-
-                        <Avatar
-                            style={{
-                                backgroundColor: '#87d068',
-                            }}
-                            icon={<UserOutlined />}
-                        />
-
-                    </Popover>
-
-
+                    <Avatar
+                        style={{
+                            backgroundColor: '#87d068',
+                        }}
+                        icon={<UserOutlined />}
+                    />
                 </Col>
                 <Col span={2} >
                     <a style={{ color: 'white' }}> <span onClick={handleLogout}> Đăng xuất</span></a>

@@ -116,7 +116,7 @@ function ScheduleManager() {
 
                         </Col>
                         <Col className="gutter-row" span={4}>
-                            <Button onClick={handleClickBtnAddSchedule} type="primary">Phân lịch làm</Button>
+                            <Button style={{ marginTop: '21px' }} onClick={handleClickBtnAddSchedule} type="primary">Phân lịch làm</Button>
                         </Col>
                     </Row>
                     <Table

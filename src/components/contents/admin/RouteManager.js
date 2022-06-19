@@ -3,7 +3,7 @@ import { Layout, Row, Col, Select, Button, Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import HeaderAdmin from '../../header/HeaderAdmin';
 import MenuAdmin from '../../menu/admin/MenuAdmin';
-import "./Style.scss"
+
 import {
     Chart as ChartJs,
     CategoryScale,
@@ -19,6 +19,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addBusRouteStart, getListBusRouteBySemesterStart, getListCharRouteStart, getListRouteStart } from '../../../redux/reduce/RouteReduce';
 import { getListBusRouteBySemester } from './../../../api/RouteApi';
 import { getListBySemesterBusStart } from '../../../redux/reduce/BusReduce';
+import { useNavigate } from 'react-router-dom';
 ChartJs.register(
     CategoryScale,
     LinearScale,
@@ -33,7 +34,8 @@ const { Option } = Select
 
 function RouteManager() {
     const [barData, setBarData] = useState({})
-
+    const isLoginStaff = useSelector((state) => state.authStaff.isLoginStaff)
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const dataCharSelector = useSelector((state) => state.route.charRoute)
     const listBusRoute = useSelector((state) => state.route.busRoutes)
@@ -100,6 +102,28 @@ function RouteManager() {
 
 
     ];
+    // AxiosClient.post("/count-student-by-route-in-semester", JSON.stringify({ id_semester: 24 }))
+    //     .then((response) => {
+    //         setBarData({
+    //             labels: response.map(val => val.name_route),
+    //             datasets: [
+    //                 {
+    //                     label: 'Biểu đồ học sinh đăng kí điểm đón',
+    //                     data: response.map(val => val.count_student),
+    //                     backgroundColor: [
+    //                         "#3cb371",
+    //                         "#0000FF",
+    //                         "#9966FF",
+    //                         "#4C4CFF",
+    //                         "#00FFFF",
+    //                         "#f990a7",
+    //                         "#aad2ed",
+
+    //                     ]
+    //                 }
+    //             ]
+    //         })
+    //     })
     useEffect(() => {
         // dispatch(getListCharRouteStart({ id_semester: 24 }))
 
@@ -122,13 +146,19 @@ function RouteManager() {
         //         }
         //     ]
         // })
-        dispatch(getListBusRouteBySemesterStart({ id_semester: 24 }))
-        setTimeout(() => {
-            dispatch(getListRouteStart())
-        }, 1000)
-        setTimeout(() => {
-            dispatch(getListBySemesterBusStart({ id_semester: 24 }))
-        }, 1500)
+        if (isLoginStaff) {
+            dispatch(getListBusRouteBySemesterStart({ id_semester: 24 }))
+            setTimeout(() => {
+                dispatch(getListRouteStart())
+            }, 1000)
+            setTimeout(() => {
+                dispatch(getListBySemesterBusStart({ id_semester: 24 }))
+            }, 1500)
+        }
+        else {
+
+            navigate("/login-staff")
+        }
     }, [])
     const handleClickBtnAddBusRoute = () => {
         dispatch(addBusRouteStart({

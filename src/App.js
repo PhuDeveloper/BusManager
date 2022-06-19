@@ -7,7 +7,9 @@ import StationManager from './components/contents/admin/StationManager';
 import AbsentManager from './components/contents/admin/AbsentManager';
 import RouteManager from './components/contents/admin/RouteManager';
 import ScheduleManager from './components/contents/admin/ScheduleManager';
-import PageLoginStaff from './components/contents/Auth/PageLoginDriver';
+import PageLoginStaff from './components/contents/auth/PageLoginDriver';
+import ChangePassword from './components/contents/admin/ChangePassword';
+import ChangeInfo from './components/contents/admin/ChangeInfo';
 function App() {
   return (
     <div >
@@ -18,6 +20,8 @@ function App() {
         <Route path="/admin/route" element={<RouteManager />} />
         <Route path="/admin/schedule" element={<ScheduleManager />} />
         <Route path="/login-staff" element={<PageLoginStaff />} />
+        <Route path="/admin/change-password" element={<ChangePassword />} />
+        <Route path="/admin/change-info" element={<ChangeInfo />} />
       </Routes>
     </div>
   );
