@@ -1,6 +1,5 @@
 <h1>Quản lý xe bus đưa đón học sinh</h1> 
 
-Video demo : https://www.youtube.com/watch?v=H4wudeZbcKo
 
 
 
@@ -32,6 +31,7 @@ Video demo : https://www.youtube.com/watch?v=H4wudeZbcKo
 - Xác nhận và phân lại lịch làm việc nếu như tài xế báo vắng
 - Xem danh sách, phân tuyến cho xe bus
 - Xem danh sách, tạo điểm đón mới và chỉnh sửa mức giá cụ thể cho từng điểm đón
+
 
 
 
