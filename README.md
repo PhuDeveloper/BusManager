@@ -1,10 +1,8 @@
 <h1>Quản lý xe bus đưa đón học sinh</h1> 
 
-Trước đó dự án này mình (sử dụng Html, Scss, Bootstrap để làm giao diện), (sử dụng Jquery, Ajax để call api và xử lý dữ liệu)
+Video demo : https://www.youtube.com/watch?v=H4wudeZbcKo
 
-Sau khi có thời gian khoảng hơn 1 tháng được học hỏi và tham gia vào dự án thực tế tại công ty, mình đã nắm được cơ bản về luồng hoạt động của React Redux. Nên mình muốn làm lại dự án này bằng ReactJs để có thể ôn lại những kiến thức mình học đc trong dự án thực tế đó.
 
-Dự án này mình đã tạo xong cấu trúc cơ bản của react redux, đã làm xong các chức năng chính như (xem danh sách, thêm, xóa, sửa )và đang hoàn thiện dần các chức năng khác
 
 <h4>Các công nghệ sử dụng : </h4> ReactJs, Redux toolkit, Redux-saga, Axios, Ant Design
 
