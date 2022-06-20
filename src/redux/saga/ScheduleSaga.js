@@ -2,6 +2,7 @@
 import { takeEvery, call, put, delay } from 'redux-saga/effects';
 import { addScheduleError, addScheduleStart, addScheduleSuccess, getListByDateScheduleError, getListByDateScheduleStart, getListByDateScheduleSuccess, getListScheduleError, getListScheduleStart, getListScheduleSuccess } from '../reduce/ScheduleReduce';
 import { getByDateScheduleApi, getScheduleApi, addScheduleApi } from './../../api/ScheduleApi';
+import { message } from 'antd';
 export default function* ScheduleSaga() {
     yield takeEvery(getListScheduleStart.type, ApiGetListSchedule)
     yield takeEvery(getListByDateScheduleStart.type, ApiGetListScheduleByDate)
@@ -34,14 +35,18 @@ function* ApiAddSchedule(action) {
         let response = yield call(addScheduleApi, action.payload);
         if (response.result) {
             let data = yield call(getScheduleApi);
+            message.success("Thêm lịch làm việc thành công")
             yield put(addScheduleSuccess(data))
+
 
         } else {
             yield put(addScheduleError())
+            message.error("Thêm lịch thất bại")
 
         }
     } catch (error) {
         yield put(addScheduleError())
+        message.error("Có lỗi xảy ra")
 
     }
 }

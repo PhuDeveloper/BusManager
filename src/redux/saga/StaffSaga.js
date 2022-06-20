@@ -6,6 +6,7 @@ import {
     removeStaffError, removeStaffStart, removeStaffSuccess
 } from "../reduce/StaffReduce";
 import { getStaffApi, addStaffApi, deleteStaffApi, updateStaffApi } from './../../api/StaffApi';
+import { message } from 'antd';
 
 
 export default function* StaffSaga() {
@@ -34,13 +35,17 @@ function* ApiAddStaff(action) {
         if (response.result === true) {
             let data = yield call(getStaffApi)
             yield put(addStaffSuccess(data))
+            message.success("Thêm nhân viên thành công")
         }
         else {
             yield put(addStaffError())
+            message.error("Thêm nhân viên thất bại")
         }
     } catch (error) {
         console.log(error);
         yield put(addStaffError())
+        message.error("Có lỗi xảy ra")
+
     }
 }
 function* ApiRemoveStaff(action) {
@@ -50,13 +55,17 @@ function* ApiRemoveStaff(action) {
         if (response.result === true) {
             let data = yield call(getStaffApi)
             yield put(removeStaffSuccess(data))
+            message.success("Thành công")
         }
         else {
             yield put(removeStaffError())
+            message.error("Thất bại")
         }
     } catch (error) {
         console.log(error);
         yield put(removeStaffError())
+        message.error("Có lỗi xảy ra")
+
     }
 }
 function* ApiUpdateStaff(action) {
@@ -66,12 +75,15 @@ function* ApiUpdateStaff(action) {
         if (response.result === true) {
             let data = yield call(getStaffApi)
             yield put(updateStaffSuccess(data))
+            message.success("Sửa thành công")
         }
         else {
             yield put(updateStaffError())
+            message.error("Sửa thất bại")
         }
     } catch (error) {
         console.log(error);
         yield put(updateStaffError())
+        message.error("Có lỗi xảy ra")
     }
 }
