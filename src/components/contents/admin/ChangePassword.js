@@ -41,13 +41,13 @@ export default function ChangePassword() {
             message.error("Mật khẩu mới không trùng nhau")
         }
     };
-    // useEffect(() => {
-    //     if (isLoginStaff) {
-    //         if (dataStaff.id_role === 3) {
-    //             navigate("/admin/driver")
-    //         }
-    //     }
-    // }, [dataStaff])
+    useEffect(() => {
+        if (isLoginStaff == false) {
+
+            navigate("/login-staff")
+
+        }
+    }, [])
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };

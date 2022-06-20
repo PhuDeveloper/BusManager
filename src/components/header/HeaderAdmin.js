@@ -6,7 +6,7 @@ import {
     LineChartOutlined,
     UserOutlined,
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, Col, Row, Avatar, Popover } from 'antd';
+import { Breadcrumb, Layout, Menu, Col, Row, Avatar, Popover, message } from 'antd';
 import { useDispatch } from 'react-redux';
 import { logoutStaff } from '../../redux/reduce/AuthDriverReduce';
 import { Link, useNavigate } from 'react-router-dom';
@@ -21,6 +21,7 @@ export default function HeaderAdmin() {
         setTimeout(() => {
             navigate("/login-staff")
         }, 200)
+        message.success("Đã đăng xuất")
     }
     const text = <span>Cài đặt</span>;
     const content = (

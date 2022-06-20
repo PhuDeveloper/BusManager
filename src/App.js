@@ -22,6 +22,8 @@ function App() {
         <Route path="/login-staff" element={<PageLoginStaff />} />
         <Route path="/admin/change-password" element={<ChangePassword />} />
         <Route path="/admin/change-info" element={<ChangeInfo />} />
+        <Route path="/" element={<PageLoginStaff />} />
+
       </Routes>
     </div>
   );

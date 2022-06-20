@@ -39,7 +39,9 @@ export default function ChangeInfo() {
             })
     };
     useEffect(() => {
-
+        if (isLoginStaff == false) {
+            navigate("/login-staff")
+        }
     }, [])
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
